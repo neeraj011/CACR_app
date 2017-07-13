@@ -1,5 +1,6 @@
 package cacr.cacr_app;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -67,7 +68,8 @@ public class Home extends AppCompatActivity {
         }
         if (id == R.id.action_add) {
 
-
+            Intent o=new Intent(Home.this,AddData.class);
+            startActivity(o);
         }
         return true;
     }
