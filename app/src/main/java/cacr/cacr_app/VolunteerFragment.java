@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Spinner;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -29,6 +30,7 @@ public class VolunteerFragment extends Fragment implements AdapterView.OnItemSel
     String institute,location;
     String[] insti;
     String[] locate;
+    ListView list1,list2;
     ProgressDialog progressDialog;
     public static String url = "https://neerajjethnani01.000webhostapp.com/cacr/get_institutions.php";
     public static String url1 = "https://neerajjethnani01.000webhostapp.com/cacr/get_locations.php";
@@ -49,6 +51,8 @@ public class VolunteerFragment extends Fragment implements AdapterView.OnItemSel
         View view=inflater.inflate(R.layout.fragment_volunteer,container,false);
         s1=(Spinner)view.findViewById(R.id.spinner1);
         s2=(Spinner)view.findViewById(R.id.spinner2);
+        list1=(ListView)view.findViewById(R.id.listView1);
+        list2=(ListView)view.findViewById(R.id.listView2);
         String[] tables = {"View All", "Location","Institute"};
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item, tables);
@@ -69,14 +73,20 @@ public class VolunteerFragment extends Fragment implements AdapterView.OnItemSel
         switch (position){
             case 0:
                 s2.setVisibility(View.GONE);
+                list1.setVisibility(View.VISIBLE);
+                list2.setVisibility(View.GONE);
                 break;
             case 1:
                 s2.setVisibility(View.VISIBLE);
                 new RetrieveDon().execute();
+                list2.setVisibility(View.VISIBLE);
+                list1.setVisibility(View.GONE);
                 break;
             case 2:
                 s2.setVisibility(View.VISIBLE);
                 new RetrieveInst().execute();
+                list2.setVisibility(View.VISIBLE);
+                list1.setVisibility(View.GONE);
                 break;
 
         }
