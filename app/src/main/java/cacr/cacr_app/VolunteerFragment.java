@@ -38,7 +38,7 @@ public class VolunteerFragment extends Fragment implements AdapterView.OnItemSel
     String[] locate;
     String name_arr="", email_arr="", contact_arr="", institute_arr="", location_arr="", combinedText="";
     String name_arr1[], email_arr1[], contact_arr1[], institute_arr1[], location_arr1[], combinedArray[];
-    GridView list1;
+    ListView list1;
     ListView list2;
     ProgressDialog progressDialog;
     public static String url = "https://neerajjethnani01.000webhostapp.com/cacr/get_institutions.php";
@@ -63,7 +63,7 @@ public class VolunteerFragment extends Fragment implements AdapterView.OnItemSel
         View view=inflater.inflate(R.layout.fragment_volunteer,container,false);
         s1=(Spinner)view.findViewById(R.id.spinner1);
         s2=(Spinner)view.findViewById(R.id.spinner2);
-        list1=(GridView)view.findViewById(R.id.listView1);
+        list1=(ListView)view.findViewById(R.id.listView1);
         list2=(ListView)view.findViewById(R.id.listView2);
         String[] tables = {"View All", "Location","Institute"};
 
@@ -94,14 +94,14 @@ public class VolunteerFragment extends Fragment implements AdapterView.OnItemSel
                 case 1:
                     s2.setVisibility(View.VISIBLE);
                     new RetrieveDon().execute();
-                    list1.setVisibility(View.VISIBLE);
-                    list2.setVisibility(View.GONE);
+                    list1.setVisibility(View.GONE);
+                    list2.setVisibility(View.VISIBLE);
                     break;
                 case 2:
                     s2.setVisibility(View.VISIBLE);
                     new RetrieveInst().execute();
-                    list1.setVisibility(View.VISIBLE);
-                    list2.setVisibility(View.GONE);
+                    list1.setVisibility(View.GONE);
+                    list2.setVisibility(View.VISIBLE);
                     break;
 
             }
@@ -386,7 +386,7 @@ public class VolunteerFragment extends Fragment implements AdapterView.OnItemSel
             location_arr1 = location_arr.split(":");
             combinedArray = combinedText.split(":");
 
-            list1.setAdapter(new ArrayAdapter<String>(getContext(),
+            list2.setAdapter(new ArrayAdapter<String>(getContext(),
                     android.R.layout.simple_list_item_1, combinedArray));
 
 
@@ -466,7 +466,7 @@ public class VolunteerFragment extends Fragment implements AdapterView.OnItemSel
             location_arr1 = location_arr.split(":");
             combinedArray = combinedText.split(":");
 
-            list1.setAdapter(new ArrayAdapter<String>(getContext(),
+            list2.setAdapter(new ArrayAdapter<String>(getContext(),
                     android.R.layout.simple_list_item_1, combinedArray));
 
 
