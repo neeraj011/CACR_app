@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import org.apache.http.HttpEntity;
@@ -34,8 +33,6 @@ public class VolunteerFragment extends Fragment implements AdapterView.OnItemSel
     InputStream is=null, is1=null;
     String result = "", line = "", result1="", line1="";
     String institute,location;
-    String[] insti;
-    String[] locate;
     String name_arr="", email_arr="", contact_arr="", institute_arr="", location_arr="", combinedText="";
     String name_arr1[], email_arr1[], contact_arr1[], institute_arr1[], location_arr1[], combinedArray[];
     ListView list1;
@@ -66,14 +63,8 @@ public class VolunteerFragment extends Fragment implements AdapterView.OnItemSel
         list1=(ListView)view.findViewById(R.id.listView1);
         list2=(ListView)view.findViewById(R.id.listView2);
         String[] tables = {"View All", "Location","Institute"};
-
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item, tables);
-
-
-        // Drop down layout style - list view with radio button
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        // attaching data adapter to spinner
         s1.setAdapter(dataAdapter);
         s1.setOnItemSelectedListener(this);
         s2.setOnItemSelectedListener(this);
@@ -86,7 +77,7 @@ public class VolunteerFragment extends Fragment implements AdapterView.OnItemSel
         if (spinner.getId()==R.id.spinner1) {
             switch (position) {
                 case 0:
-                    s2.setVisibility(View.INVISIBLE);
+                    s2.setVisibility(View.GONE);
                     list1.setVisibility(View.VISIBLE);
                     list2.setVisibility(View.GONE);
                     new RetrieveAll().execute();
@@ -166,11 +157,11 @@ public class VolunteerFragment extends Fragment implements AdapterView.OnItemSel
         }
         @Override
         protected void onPostExecute(Void aVoid) {
-            insti = institute.split(":");
+            institute_arr1 = institute.split(":");
 
 
             s2.setAdapter(new ArrayAdapter<String>(getContext(),
-                    android.R.layout.simple_list_item_1, insti));
+                    android.R.layout.simple_list_item_1, institute_arr1));
 
 
             progressDialog.dismiss();
@@ -226,11 +217,11 @@ public class VolunteerFragment extends Fragment implements AdapterView.OnItemSel
         }
         @Override
         protected void onPostExecute(Void aVoid) {
-            locate = location.split(":");
+            location_arr1 = location.split(":");
 
 
             s2.setAdapter(new ArrayAdapter<String>(getContext(),
-                    android.R.layout.simple_list_item_1, locate));
+                    android.R.layout.simple_list_item_1,location_arr1));
 
 
             progressDialog.dismiss();
