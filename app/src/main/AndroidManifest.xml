@@ -25,7 +25,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".AddData"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:parentActivityName=".Home"/>
         <activity android:name=".MainActivity"></activity>
     </application>
 

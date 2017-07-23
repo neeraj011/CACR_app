@@ -39,6 +39,7 @@ TextView tv1,tv2,tv3,tv4,tv5,tv6,tv7,tv8,tv9;
     ProgressDialog progressDialog;
     Boolean isInserted;
     InputStream is = null;
+
     public static String url = "https://neerajjethnani01.000webhostapp.com/cacr/add_volunteers.php";
     public static String url1 = "https://neerajjethnani01.000webhostapp.com/cacr/add_donors.php";
     public static String url2 = "https://neerajjethnani01.000webhostapp.com/cacr/add_partners.php";
@@ -50,6 +51,7 @@ TextView tv1,tv2,tv3,tv4,tv5,tv6,tv7,tv8,tv9;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_data);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         tv1 = (TextView) findViewById(R.id.textView);
         tv2 = (TextView) findViewById(R.id.textView2);
         tv3 = (TextView) findViewById(R.id.textView3);
