@@ -32,9 +32,10 @@ import org.apache.http.message.BasicNameValuePair;
 public class AddData extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 TextView tv1,tv2,tv3,tv4,tv5,tv6,tv7,tv8,tv9;
     EditText name,email,phone,college,location,year,area,amount,project;
-    String names,emails,phones,colleges,locations,years,areas,amounts,projects;
+    String names,emails,phones,colleges,locations,years,areas,projects;
     Spinner spinner;
     Button b1;
+    int amounts;
     ProgressDialog progressDialog;
     Boolean isInserted;
     InputStream is = null;
@@ -99,9 +100,9 @@ TextView tv1,tv2,tv3,tv4,tv5,tv6,tv7,tv8,tv9;
                         names = name.getText().toString();
                         emails = email.getText().toString();
                         phones = phone.getText().toString();
-                        amounts = amount.getText().toString();
+                        amounts = Integer.parseInt(amount.getText().toString());
                         projects = project.getText().toString();
-                        if (names.equals("") || emails.equals("") || phones.equals("") || amounts.equals("") || projects.equals("")) {
+                        if (names.equals("") || emails.equals("") || phones.equals("") || amounts==0 || projects.equals("")) {
                             String msg = "One or more fields are empty";
                             Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
                         }
@@ -267,7 +268,7 @@ TextView tv1,tv2,tv3,tv4,tv5,tv6,tv7,tv8,tv9;
             nameValuePairList.add(new BasicNameValuePair("name", names));
             nameValuePairList.add(new BasicNameValuePair("email", emails));
             nameValuePairList.add(new BasicNameValuePair("contact", phones));
-            nameValuePairList.add(new BasicNameValuePair("amount", amounts));
+            nameValuePairList.add(new BasicNameValuePair("amount", String.valueOf(amounts)));
             nameValuePairList.add(new BasicNameValuePair("project", projects));
 
 

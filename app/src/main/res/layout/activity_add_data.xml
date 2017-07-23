@@ -211,6 +211,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimary"
             android:visibility="gone"
+            android:inputType="number"
             android:layout_alignLeft="@+id/textView4"
             android:layout_alignStart="@+id/textView4"
             android:layout_below="@+id/editText5"
